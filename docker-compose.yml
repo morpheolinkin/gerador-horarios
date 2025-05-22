@@ -1,0 +1,19 @@
+version: '3.8' # Versão da sintaxe do Docker Compose
+
+services:
+  db: # Nome do serviço do seu banco de dados
+    image: postgres:15-alpine # Imagem oficial do PostgreSQL. Usamos a versão 15 e a tag alpine para uma imagem menor.
+    restart: always # Reinicia o container se ele parar
+    environment: # Variáveis de ambiente para configurar o PostgreSQL
+      POSTGRES_DB: gerador_horarios_db # Nome do banco de dados a ser criado
+      POSTGRES_USER: admin # Usuário do banco de dados
+      POSTGRES_PASSWORD: admin # Senha do usuário
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do seu host para a porta 5432 do container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Mapeia um volume para persistir os dados do banco de dados
+      # Isso garante que seus dados não serão perdidos se o container for removido
+      # Pode ser um volume nomeado como aqui, ou um path no seu sistema de arquivos (ex: ./pgdata:/var/lib/postgresql/data)
+
+volumes:
+  postgres_data: # Declara o volume nomeado
