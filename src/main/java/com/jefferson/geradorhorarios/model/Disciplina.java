@@ -1,9 +1,7 @@
 package com.jefferson.geradorhorarios.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,5 +26,7 @@ public class Disciplina {
     // mappedBy indica que o relacionamento é gerenciado pelo campo "disciplinasLecionadas" na classe Professor
     // Isso evita a criação de duas tabelas de junção e define quem é o "dono" do relacionamento
     @ManyToMany(mappedBy = "disciplinasLecionadas", fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude // IMPORTANTE: Exclui este campo de equals/hashCode
+    @ToString.Exclude // IMPORTANTE: Exclui este campo de toString
     private Set<Professor> professores = new HashSet<>();
 }
