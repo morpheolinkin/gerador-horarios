@@ -2,18 +2,22 @@ package com.jefferson.geradorhorarios.model;
 
 import com.jefferson.geradorhorarios.model.enums.TipoDisponibilidade;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
-import java.time.DayOfWeek; // Enum do Java para dias da semana
-import java.time.LocalTime; // Para representar horários
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DisponibilidadeProfessor {
+public class DisponibilidadeProfessor implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
