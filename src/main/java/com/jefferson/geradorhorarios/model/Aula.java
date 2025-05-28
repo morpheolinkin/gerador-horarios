@@ -1,10 +1,12 @@
 package com.jefferson.geradorhorarios.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
@@ -12,7 +14,9 @@ import java.time.LocalTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Aula {
+public class Aula implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
