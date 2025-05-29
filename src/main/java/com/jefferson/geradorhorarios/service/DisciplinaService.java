@@ -5,6 +5,8 @@ import com.jefferson.geradorhorarios.model.Disciplina;
 import com.jefferson.geradorhorarios.repository.DisciplinaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DisciplinaService {
     private final DisciplinaRepository disciplinaRepository;
@@ -39,7 +41,7 @@ public class DisciplinaService {
      *
      * @return Uma lista de todas as disciplinas.
      */
-    public Iterable<Disciplina> listarTodasDisciplinas() {
+    public List<Disciplina> listarTodasDisciplinas() {
         return disciplinaRepository.findAll();
     }
 

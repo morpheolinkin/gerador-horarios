@@ -5,6 +5,8 @@ import com.jefferson.geradorhorarios.model.Turma;
 import com.jefferson.geradorhorarios.repository.TurmaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TurmaService {
     private final TurmaRepository turmaRepository;
@@ -30,7 +32,7 @@ public class TurmaService {
      * @return A turma encontrada.
      */
 
-    public Turma findById(Long id) {
+    public Turma buscarTurmaPorId(Long id) {
         return turmaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Turma não encontrada com ID: " + id));
     }
@@ -40,7 +42,7 @@ public class TurmaService {
      *
      * @return Uma lista de todas as turmas.
      */
-    public Iterable<Turma> findAll() {
+    public List<Turma> listarTodasTurmas() {
         return turmaRepository.findAll();
     }
 
@@ -49,7 +51,7 @@ public class TurmaService {
      *
      * @param id O ID da turma a ser deletada.
      */
-    public void deleteById(Long id) {
+    public void deletarTurma(Long id) {
         if (!turmaRepository.existsById(id)) {
             throw new ResourceNotFoundException("Turma não encontrada com ID: " + id);
         }
