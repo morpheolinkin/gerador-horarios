@@ -1,5 +1,6 @@
 package com.jefferson.geradorhorarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jefferson.geradorhorarios.model.enums.TipoDisponibilidade;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class DisponibilidadeProfessor implements Serializable {
     // Relacionamento Many-to-One com Professor
     @ManyToOne(fetch = FetchType.LAZY) // FetchType.LAZY para carregar o professor apenas quando necessário
     @JoinColumn(name = "professor_id", nullable = false) // Coluna da chave estrangeira no DB
+    @JsonIgnore
     private Professor professor;
 
     @Enumerated(EnumType.STRING) // Armazena o enum como String no DB (ex: "MONDAY", "TUESDAY")

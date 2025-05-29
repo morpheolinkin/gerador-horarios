@@ -1,5 +1,6 @@
 package com.jefferson.geradorhorarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,5 +33,6 @@ public class Disciplina implements Serializable {
     @ManyToMany(mappedBy = "disciplinasLecionadas", fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude // IMPORTANTE: Exclui este campo de equals/hashCode
     @ToString.Exclude // IMPORTANTE: Exclui este campo de toString
+    @JsonIgnore
     private Set<Professor> professores = new HashSet<>();
 }
