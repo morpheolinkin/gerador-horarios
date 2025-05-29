@@ -2,6 +2,7 @@ package com.jefferson.geradorhorarios.repository;
 
 import com.jefferson.geradorhorarios.model.Aula;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.DayOfWeek;
@@ -19,6 +20,10 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
      * @return Uma lista de aulas do professor.
      */
     List<Aula> findByProfessorId(Long professorId);
+
+    // Método para carregar todas as aulas com seus relacionamentos de forma EAGER
+    @Query("SELECT a FROM Aula a JOIN FETCH a.disciplina JOIN FETCH a.professor JOIN FETCH a.turma")
+    List<Aula> findAllWithDetails();
 
     /**
      * Encontra todas as aulas associadas a uma determinada turma.
